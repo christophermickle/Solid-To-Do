@@ -1,12 +1,11 @@
 import { createSignal, createEffect } from "solid-js";
 // custom components
-import CustomForm from "./components/CustomForm"
+import CustomForm from "./components/CustomForm";
 import EditForm from "./components/EditForm";
 import TaskList from "./components/TaskList";
-import "./index.css"
+import "./index.css";
 
 function App() {
-
   const [tasks, setTasks] = createSignal([]);
   const [previousFocusEl, setPreviousFocusEl] = createSignal(null);
   const [editedTask, setEditedTask] = createSignal(null);
@@ -23,17 +22,17 @@ function App() {
     localStorage.setItem("solid-todo-tasks", JSON.stringify(tasks()));
   });
 
-  const addTask = (task:string) => {
-    console.log(task)
-    setTasks((prevState) => [...prevState, task])
+  const addTask = (task: string) => {
+    console.log(task);
+    setTasks((prevState) => [...prevState, task]);
     console.log(tasks());
   };
 
-  const deleteTask = (id:string) => {
+  const deleteTask = (id: string) => {
     setTasks((prevState) => prevState.filter((t) => t.id !== id));
   };
 
-  const toggleTask = (id:string) => {
+  const toggleTask = (id: string) => {
     setTasks((prevState) =>
       prevState.map((t) => (t.id === id ? { ...t, checked: !t.checked } : t))
     );
@@ -58,9 +57,11 @@ function App() {
   };
 
   return (
-    <div class='container'>
+    <div class="container">
       <header>
-        <h1>My Task List</h1>
+        <h1 class="coolText">
+          My <span>Task</span> List
+        </h1>
       </header>
       {isEditing() && (
         <EditForm
@@ -70,12 +71,12 @@ function App() {
         />
       )}
       <CustomForm addTask={addTask} />
-        <TaskList
-          tasks={tasks}
-          deleteTask={deleteTask}
-          toggleTask={toggleTask}
-          enterEditMode={enterEditMode}
-        />
+      <TaskList
+        tasks={tasks}
+        deleteTask={deleteTask}
+        toggleTask={toggleTask}
+        enterEditMode={enterEditMode}
+      />
     </div>
   );
 }
