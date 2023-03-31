@@ -114,10 +114,11 @@ h1 {
 }
 
 .container {
-  margin: 4vmax max(calc((100vw - 70rem) / 2), 1.5rem) 6em;
+  margin: 4vmax max(calc((100vw - 80rem) / 2), 1.5rem) 6em;
   display: grid;
   gap: clamp(2rem, 3.5vmax, 8rem);
   text-align: center;
+  max-width:clamp(20rem, 80vw, 45rem);
 }
 
 hr {
@@ -172,6 +173,7 @@ hr {
   gap: 0.5em;
   font-size: var(--_size);
   text-align: left;
+  max-height:2.5em;
 }
 
 .wrapper {
