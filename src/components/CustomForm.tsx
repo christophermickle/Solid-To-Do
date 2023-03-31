@@ -3,12 +3,12 @@
 import { AiFillPlusSquare } from "solid-icons/ai";
 import { createSignal } from 'solid-js';
 
-const CustomForm = ({ addTask }) => {
-  const [task, setTask] = createSignal();
+const CustomForm = (props) => {
+  const [task, setTask] = createSignal('');
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    addTask({
+    props.addTask({
       name: task(),
       checked: false,
       id: Date.now()
@@ -18,14 +18,14 @@ const CustomForm = ({ addTask }) => {
 
   return (
     <form
-      className="todo"
+      class="todo"
       onSubmit={handleFormSubmit}
       >
-      <div className="wrapper">
+      <div class="wrapper">
         <input
           type="text"
           id="task"
-          className="input"
+          class="input"
           value={task()}
           onInput={(e) => setTask(e.target.value)}
           required
@@ -34,12 +34,12 @@ const CustomForm = ({ addTask }) => {
           placeholder="Enter Task"
         />
         <label
-          htmlFor="task"
-          className="label"
+         for="task"
+          class="label"
         >Enter Task</label>
       </div>
       <button
-        className="btn"
+        class="btn"
         aria-label="Add Task"
         type="submit"
         >
