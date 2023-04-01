@@ -1,15 +1,11 @@
 import { createSignal, createEffect } from "solid-js";
 // custom components
 import CustomForm from "./components/CustomForm";
-import EditForm from "./components/EditForm";
 import TaskList from "./components/TaskList";
 import "./index.css";
 
 function App() {
   const [tasks, setTasks] = createSignal([]);
-  const [previousFocusEl, setPreviousFocusEl] = createSignal(null);
-  const [editedTask, setEditedTask] = createSignal(null);
-  const [isEditing, setIsEditing] = createSignal(false);
 
   createEffect(() => {
     const storedTasks = localStorage.getItem("solid-todo-tasks");
@@ -42,18 +38,6 @@ function App() {
     setTasks((prevState) =>
       prevState.map((t) => (t.id === task.id ? { ...t, name: task.name } : t))
     );
-    closeEditMode(dialogRef);
-  };
-
-  const closeEditMode = (editRef) => {
-    setIsEditing(false);
-    previousFocusEl().focus();
-    editRef.current.close();
-  };
-
-  const enterEditMode = (task) => {
-    setEditedTask(task);
-    setIsEditing(true);
   };
 
   return (
@@ -63,19 +47,12 @@ function App() {
           My <span>Task</span> List
         </h1>
       </header>
-      {isEditing() && (
-        <EditForm
-          editedTask={editedTask()}
-          updateTask={updateTask}
-          closeEditMode={closeEditMode}
-        />
-      )}
       <CustomForm addTask={addTask} />
       <TaskList
         tasks={tasks}
         deleteTask={deleteTask}
         toggleTask={toggleTask}
-        enterEditMode={enterEditMode}
+        updateTask={updateTask}
       />
     </div>
   );

@@ -1,57 +1,88 @@
-import { createSignal, createEffect } from 'solid-js';
+import { createEffect, createSignal, Component } from "solid-js";
+import { HiOutlinePencilAlt } from "solid-icons/hi";
+import { FaSolidSquareCheck } from "solid-icons/fa";
 
-// library imports
-import { FaSolidSquareCheck } from 'solid-icons/fa';
-// { editedTask, updateTask, closeEditMode }
-const EditForm = (props) => {
-  const [updatedTaskName, setUpdatedTaskName] = createSignal(props.editedTask.name);
+interface Task {
+  id: number;
+  name: string;
+  checked: boolean;
+}
 
+interface EditFormProps {
+  task: Task;
+  updateTask: (task: Task) => void;
+}
+
+const EditForm:Component = (props: EditFormProps) => {
+  const [updatedTaskName, setUpdatedTaskName] = createSignal("");
+  let dialogRef;
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    props.updateTask({...props.editedTask, name: updatedTaskName()}
-    )
-  }
-  let dialogRef;
+    props.updateTask({ ...props.task, name: updatedTaskName() });
+    dialogRef.close();
+  };
+  <dialog:HTMLDialogElement> </dialog:HTMLDialogElement>
 
+  
   return (
-    <dialog ref={dialogRef}
-      onClose={props.closeEditMode(dialogRef.current)}
-      role="dialog"
-      aria-labelledby="editTask"
-      onClick={(e) => {e.target === e.currentTarget && dialogRef.close()}}
+    <>
+    
+      <button onClick={() => dialogRef.showModal()}>
+        <HiOutlinePencilAlt width={24} height={24} />
+      </button>
+      <dialog ref={dialogRef} onClose={() => dialogRef.close()} class="mx-auto my-auto">
+        <form method="dialog" onSubmit={handleFormSubmit} >
+          <input onInput={(e)=>setUpdatedTaskName(e.target.value)}>
+          </input>
+          <button>
+            <FaSolidSquareCheck stroke-width={2} height={24} width={24} />
+          </button>
+        </form>
+      </dialog>
+    
+
+      {/* <button
+        class="btn"
+        onClick={() => {
+          dialogRef.showModal();
+        }}
       >
-      <form
-        class="todo"
-        onSubmit={handleFormSubmit}
-        method="dialog"
-        >
-        <div class="wrapper">
-          <input
-            type="text"
-            id="editTask"
-            class="input"
-            value={updatedTaskName()}
-            onChange={(e) => setUpdatedTaskName(e.target.value)}
-            required
-            autofocus
-            maxLength={60}
-            placeholder="Update Task"
-          />
-          <label
-            for="editTask"
-            class="label"
-          >Update Task</label>
-        </div>
-        <button
-          class="btn"
-          aria-label={`Confirm edited task to now read ${updatedTaskName()}`}
-          type="submit"
-          >
-          <FaSolidSquareCheck stroke-width={2} height={24} width={24} />
-        </button>
-      </form>
-    </dialog>
-  )
-}
-export default EditForm
+      </button>
+      <dialog
+        ref={(el) => dialogRef = el}
+        role="dialog"
+        aria-labelledby="editTask"
+        class="modalTodo"
+      >
+        <form class="" onSubmit={handleFormSubmit} method="dialog">
+          <div class="flex">
+            <input
+              ref={(el) => inputRef = el}
+              type="text"
+              id="editTask"
+              class="input"
+              value={updatedTaskName()}
+              onInput={(e) => setUpdatedTaskName(e.target.value)}
+              required
+              maxLength={60}
+              placeholder="Update Task"
+            />
+            <label for="editTask" class="label">
+              Update Task
+            </label>
+            <button class="w-[200px] h-10" onClick={() => dialogRef.close()}>close</button>
+            <button
+              class="btn inline"
+              aria-label={`Confirm edited task to now read ${updatedTaskName()}`}
+              type="submit"
+            >
+              
+            </button>
+          </div>
+        </form>
+      </dialog> */}
+    </>
+  );
+};
+export default EditForm;

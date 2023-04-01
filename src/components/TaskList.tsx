@@ -16,7 +16,7 @@ interface TaskListProps {
   tasks: () => Task[];
   deleteTask: (id: number) => void;
   toggleTask: (id: number) => void;
-  enterEditMode: (task: Task) => void;
+  updateTask: (task: Task) => void;
 }
 
 const TaskList = (props: TaskListProps) => {
@@ -31,7 +31,7 @@ const TaskList = (props: TaskListProps) => {
           task={task}
           deleteTask={props.deleteTask}
           toggleTask={props.toggleTask}
-          enterEditMode={props.enterEditMode}
+          updateTask={props.updateTask}
         />
       ))}
     </ul>
