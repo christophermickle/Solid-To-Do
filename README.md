@@ -1,54 +1,83 @@
-# Astro Starter Kit: Basics
+# Solid.js TailwindCSS To-Do List in Astro
+
+A blazingly fast to-do list application built with Solid.js, TailwindCSS, and Astro. This app uses a modal to allow editing of items and stores tasks in local storage for persistence.
+
+## Features
+
+- Create, edit, and delete tasks
+- Modal for editing tasks
+- Local storage for task persistence
+- Blazingly fast performance
+- Responsive design
+
+## Prerequisites
+
+- Node.js 14.x or later
+- Package manager (pnpm, npm, or yarn)
+
+## Installation
+
+Clone the repository:
 
 ```
-npm create astro@latest -- --template basics
+git clone https://github.com/yourusername/solid-tailwind-astro-todo.git
+cd solid-tailwind-astro-todo
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![basics](https://user-images.githubusercontent.com/4677417/186188965-73453154-fdec-4d6b-9c34-cb35c248ae5b.png)
-
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+Install dependencies using pnpm:
 
 ```
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+pnpm install
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Alternatively, you can use npm or yarn:
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```
+npm install
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+```
+yarn
+```
 
-## 🧞 Commands
+## Development
 
-All commands are run from the root of the project, from a terminal:
+Start the development server:
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `npm install`          | Installs dependencies                            |
-| `npm run dev`          | Starts local dev server at `localhost:3000`      |
-| `npm run build`        | Build your production site to `./dist/`          |
-| `npm run preview`      | Preview your build locally, before deploying     |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro --help` | Get help using the Astro CLI                     |
+```
+pnpm dev
+```
 
-## 👀 Want to learn more?
+Or with npm or yarn:
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```
+npm run dev
+```
+
+```
+yarn dev
+```
+
+Open your browser and navigate to `http://localhost:3000`.
+
+## Building for Production
+
+Build the project for production:
+
+```
+pnpm build
+```
+
+Or with npm or yarn:
+
+```
+npm run build
+```
+
+```
+yarn build
+```
+
+## License
+
+This project is licensed under the MIT License.
