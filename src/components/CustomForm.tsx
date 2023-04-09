@@ -27,9 +27,9 @@ const CustomForm = (props) => {
           id="task"
           class="input"
           value={task()}
-          onInput={(e) => setTask(e.target.value)}
+          onInput={(e:Event) => setTask((e.target as HTMLInputElement).value)}
           required
-          autoFocus
+          autofocus
           maxLength={60}
           placeholder="Enter Task"
         />
