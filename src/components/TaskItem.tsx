@@ -24,7 +24,7 @@ interface TaskItemProps {
 const TaskItem = (props: TaskItemProps) => {
   const [isChecked, setIsChecked] = createSignal(props.task.checked);
 
-  const handleCheckboxChange = (e) => {
+  const handleCheckboxChange = () => {
     setIsChecked(!isChecked());
     props.toggleTask(props.task.id);
   };
@@ -38,9 +38,9 @@ const TaskItem = (props: TaskItemProps) => {
           checked={isChecked()}
           onChange={handleCheckboxChange}
           name={props.task.name}
-          id={props.task.id}
+          id={props.task.id.toString()}
         />
-        <label for={props.task.id} class={styles.label}>
+        <label for={props.task.id.toString()} class={styles.label}>
           {props.task.name}
           <p class={styles.checkmark}>
             <FaSolidSquareCheck stroke-width={2} width={24} height={24} />
@@ -48,10 +48,7 @@ const TaskItem = (props: TaskItemProps) => {
         </label>
       </div>
       <div class={styles["task-group"]}>
-        <EditForm
-           task={props.task}
-           updateTask={props.updateTask}
-        />
+        <EditForm task={props.task} updateTask={props.updateTask} />
         <button
           class={`btn ${styles.delete}`}
           aria-label={`Delete ${props.task.name} Task`}
