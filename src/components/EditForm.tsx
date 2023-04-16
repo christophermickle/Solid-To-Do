@@ -17,11 +17,8 @@ const EditForm: Component<EditFormProps> = (props) => {
   const [updatedTaskName, setUpdatedTaskName] = createSignal("");
   let dialogRef: HTMLDialogElement;
 
-  const handleFormSubmit = (e: SubmitEvent) => {
-    e.preventDefault();
-    props.updateTask({ ...props.task, name: updatedTaskName() });
-    dialogRef.close();
-  };
+// private comment: do not read
+
   return (
     <>
       <button onClick={() => dialogRef.showModal()}>
@@ -32,11 +29,18 @@ const EditForm: Component<EditFormProps> = (props) => {
         onClose={() => dialogRef.close()}
         class="mx-auto my-auto"
       >
-        <form method="dialog" onSubmit={handleFormSubmit}>
+        <form
+          method="dialog"
+          onSubmit={(e) => {
+            e.preventDefault();
+            props.updateTask({ ...props.task, name: updatedTaskName() });
+            dialogRef.close();
+          }}
+        >
           <input
-            onInput={(e: Event) =>
-              setUpdatedTaskName((e.target as HTMLInputElement).value)
-            }
+            onInput={(e) => {
+              setUpdatedTaskName(e.currentTarget.value);
+            }}
           ></input>
           <button>
             <FaSolidSquareCheck stroke-width={2} height={24} width={24} />
