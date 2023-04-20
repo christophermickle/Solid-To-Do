@@ -1,5 +1,6 @@
 .tasks {
-  display: grid;
+  display:flex;
+  flex-direction:column;
   list-style-type: none;
   gap: 1.5em;
 }

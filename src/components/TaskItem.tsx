@@ -50,11 +50,11 @@ const TaskItem = (props: TaskItemProps) => {
       <div class={styles["task-group"]}>
         <EditForm task={props.task} updateTask={props.updateTask} />
         <button
-          class={`btn ${styles.delete}`}
+          class="text-white-50 bg-fuchsia-700 p-3 rounded-md  hover:bg-fuchsia-900"
           aria-label={`Delete ${props.task.name} Task`}
           onClick={() => props.deleteTask(props.task.id)}
         >
-          <BsTrash3 width={24} height={24} />
+          <BsTrash3 stroke-width={2} width={24} height={24} />
         </button>
       </div>
     </li>
