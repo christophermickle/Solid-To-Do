@@ -43,7 +43,7 @@ const EditForm: Component<EditFormProps> = (props) => {
             dialogRef.close();
           }}
         >
-          <del class="text-zinc-300 text-3xl">
+          <del class="text-zinc-300/60 text-3xl">
             <h2 class="text-fuchsia-700 text-center text-5xl mb-12">
               {props.task.name}
             </h2>
@@ -62,9 +62,9 @@ const EditForm: Component<EditFormProps> = (props) => {
               ></input>
               <label
                 for="updateText"
-                class="text-zinc-300 absolute peer-placeholder-shown:-top-0 -top-12 transition-all peer-focus:-top-12 peer-focus:bg-stone-900 peer-focus:text-1xl rounded-lg p-1 peer-focus:mt-4 placeholder-shown:mt-3"
+                class="text-zinc-300 absolute peer-placeholder-shown:-top-0 -top-12 transition-all peer-focus:-top-12 peer-focus:bg-stone-900 peer-focus:text-1xl rounded-lg p-1 peer-focus:mt-4 placeholder-shown:my-3 my-2"
               >
-                Updated task?
+                Update me
               </label>
               <button>
                 <FaSolidSquareCheck
