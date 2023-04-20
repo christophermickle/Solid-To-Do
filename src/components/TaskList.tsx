@@ -25,7 +25,7 @@ const TaskList = (props: TaskListProps) => {
   );
 
   return (
-    <ul class={styles.task}>
+    <ul class={styles.tasks}>
       {sortedTasks().map((task) => (
         <TaskItem
           task={task}

@@ -2,11 +2,11 @@
 import { AiFillPlusSquare } from "solid-icons/ai";
 import { createSignal } from "solid-js";
 
-interface Props {
+interface CustomFormProps {
   addTask: (task: { name: string; checked: boolean; id: number }) => void;
 }
 
-const CustomForm = (props: Props) => {
+const CustomForm = (props: CustomFormProps) => {
   const [task, setTask] = createSignal("");
 
   const handleFormSubmit = (e: SubmitEvent) => {
